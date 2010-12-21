@@ -48,7 +48,8 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 
 		// Default class map (these are shared over all)
 		$defaultClassMap = array(
-			"ApplicationFault" => "AdCenter_ApplicationFault"
+			"Date" => "AdCenter_Date"
+			, "ApplicationFault" => "AdCenter_ApplicationFault"
 			, "AdApiFaultDetail" => "AdCenter_AdApiFaultDetail"
 			, "AdApiError" => "AdCenter_AdApiError"
 			, "ApiFault" => "AdCenter_ApiFault"
