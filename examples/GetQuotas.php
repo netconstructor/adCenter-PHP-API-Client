@@ -3,7 +3,7 @@
  * GetQuotas
  *
  * This example will use the Administration Service to get the Assigned and Remaining quotas
- * then provide a figure
+ * then provide the total quota used.
  *
  * @author Brandon Parise <bparise@redventures.com>
  * @package adCenter-PHP-API-Client
