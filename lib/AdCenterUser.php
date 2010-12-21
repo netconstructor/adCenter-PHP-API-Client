@@ -21,16 +21,15 @@ class AdCenterUser
 	private $_services = array();
 
 	/**
-	 * @param string $UserName
-	 * @param string $Password
-	 * @param string $DeveloperToken
-	 * @param int $AccountId
+	 * @param string $username
+	 * @param string $password
+	 * @param string $developerToken
 	 */
-	public function __construct($UserName, $Password, $DeveloperToken)
+	public function __construct($username, $password, $developerToken)
 	{
-		$this->UserName = $UserName;
-		$this->Password = $Password;
-		$this->DeveloperToken = $DeveloperToken;
+		$this->UserName = $username;
+		$this->Password = $password;
+		$this->DeveloperToken = $developerToken;
 	}
 
 	/**
