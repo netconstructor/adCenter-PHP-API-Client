@@ -12,8 +12,7 @@
  */
 
 // Define where the adCenter API Client ./lib folder
-// define("ADCENTER_API_CLIENT_DIR", "/path/to/adCenter-PHP-API-Client/lib");
-define("ADCENTER_API_CLIENT_DIR", "/usr/share/www/software/adCenter-PHP-API-Client/lib");
+define("ADCENTER_API_CLIENT_DIR", "/path/to/adCenter-PHP-API-Client/lib");
 
 // Authentication details.
 $username = "";
