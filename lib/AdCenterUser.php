@@ -45,6 +45,18 @@ class AdCenterUser
 	}
 
 	/**
+	 * @return AdCenter_Service_ReportingService
+	 */
+	public function GetReportingService()
+	{
+		return $this->GetService(
+			"ReportingService"
+			, "https://adcenterapi.microsoft.com/Api/Advertiser/v7/Reporting/ReportingService.svc?wsdl"
+			, "https://adcenter.microsoft.com/v7"
+		);
+	}
+
+	/**
 	 * @param string $name
 	 */
 	private function GetService($name, $wsdl, $namespace)

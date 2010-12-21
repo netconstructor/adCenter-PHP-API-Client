@@ -52,6 +52,7 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 			, "AdApiFaultDetail" => "AdCenter_AdApiFaultDetail"
 			, "AdApiError" => "AdCenter_AdApiError"
 			, "ApiFault" => "AdCenter_ApiFault"
+			, "BatchError" => "AdCenter_BatchError"
 			, "OperationError" => "AdCenter_OperationError"
 		);
 
@@ -117,6 +118,56 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 	}
 }
 
+class AdCenter_AdDistribution
+{
+	const Content = "Content";
+	const Search = "Search";
+}
+
+class AdCenter_AdType
+{
+	const Image = "Image";
+	const Mobile = "Mobile";
+	const RichMedia = "RichMedia";
+	const Text = "Text";
+	const ThirdPartyCreative = "ThirdPartyCreative";
+}
+
+class AdCenter_MatchType
+{
+	const Broad = "Broad";
+	const Content = "Content";
+	const Exact = "Exact";
+	const Phrase = "Phrase";
+}
+
+class AdCenter_LanguageAndRegion
+{
+	const EnglishCanada = "EnglishCanada";
+	const France = "France";
+	const FrenchCanada = "FrenchCanada";
+	const Singapore = "Singapore";
+	const UnitedKingdom = "UnitedKingdom";
+	const UnitedStates = "UnitedStates";
+}
+
+class AdCenter_Date
+{
+	/** @var int */
+	public $Day;
+	/** @var int */
+	public $Month;
+	/** @var int */
+	public $Year;
+	/** Constructor */
+	public function __construct($Day = null, $Month = null, $Year = null)
+	{
+		$this->Day = $Day;
+		$this->Month = $Month;
+		$this->Year = $Year;
+	}
+}
+
 class AdCenter_ApplicationFault
 {
 	/** @var string */
@@ -137,6 +188,20 @@ class AdCenter_AdApiError
 	public $Detail;
 	/** @var string */
 	public $ErrorCode;
+	/** @var string */
+	public $Message;
+}
+
+class AdCenter_BatchError
+{
+	/** @var int */
+	public $Code;
+	/** @var string */
+	public $Details;
+	/** @var string */
+	public $ErrorCode;
+	/** @var int */
+	public $Index;
 	/** @var string */
 	public $Message;
 }
