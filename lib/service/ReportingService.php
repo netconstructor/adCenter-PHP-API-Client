@@ -23,7 +23,59 @@ class AdCenter_Service_ReportingService extends AdCenter_Service_SoapClient
 	public function GetClassMap()
 	{
 		return array(
-			"SubmitGenerateReportResponse" => "AdCenter_SubmitGenerateReportResponse"
+			"SubmitGenerateReportRequest" => "AdCenter_SubmitGenerateReportRequest"
+			, "ReportRequest" => "AdCenter_ReportRequest"
+			, "AdDynamicTextPerformanceReportRequest" => "AdCenter_AdDynamicTextPerformanceReportRequest"
+			, "AdDynamicTextPerformanceReportFilter" => "AdCenter_AdDynamicTextPerformanceReportFilter"
+			, "AccountThroughAdGroupReportScope" => "AdCenter_AccountThroughAdGroupReportScope"
+			, "AdGroupReportScope" => "AdCenter_AdGroupReportScope"
+			, "CampaignReportScope" => "AdCenter_CampaignReportScope"
+			, "ReportTime" => "AdCenter_ReportTime"
+			, "Date" => "AdCenter_Date"
+			, "KeywordPerformanceReportRequest" => "AdCenter_KeywordPerformanceReportRequest"
+			, "KeywordPerformanceReportFilter" => "AdCenter_KeywordPerformanceReportFilter"
+			, "DestinationUrlPerformanceReportRequest" => "AdCenter_DestinationUrlPerformanceReportRequest"
+			, "DestinationUrlPerformanceReportFilter" => "AdCenter_DestinationUrlPerformanceReportFilter"
+			, "TacticChannelReportRequest" => "AdCenter_TacticChannelReportRequest"
+			, "TacticChannelReportFilter" => "AdCenter_TacticChannelReportFilter"
+			, "AccountPerformanceReportRequest" => "AdCenter_AccountPerformanceReportRequest"
+			, "AccountPerformanceReportFilter" => "AdCenter_AccountPerformanceReportFilter"
+			, "AccountReportScope" => "AdCenter_AccountReportScope"
+			, "CampaignPerformanceReportRequest" => "AdCenter_CampaignPerformanceReportRequest"
+			, "CampaignPerformanceReportFilter" => "AdCenter_CampaignPerformanceReportFilter"
+			, "AccountThroughCampaignReportScope" => "AdCenter_AccountThroughCampaignReportScope"
+			, "AdGroupPerformanceReportRequest" => "AdCenter_AdGroupPerformanceReportRequest"
+			, "AdGroupPerformanceReportFilter" => "AdCenter_AdGroupPerformanceReportFilter"
+			, "AdPerformanceReportRequest" => "AdCenter_AdPerformanceReportRequest"
+			, "AdPerformanceReportFilter" => "AdCenter_AdPerformanceReportFilter"
+			, "BudgetSummaryReportRequest" => "AdCenter_BudgetSummaryReportRequest"
+			, "BudgetSummaryReportTime" => "AdCenter_BudgetSummaryReportTime"
+			, "AgeGenderDemographicReportRequest" => "AdCenter_AgeGenderDemographicReportRequest"
+			, "AgeGenderDemographicReportFilter" => "AdCenter_AgeGenderDemographicReportFilter"
+			, "MetroAreaDemographicReportRequest" => "AdCenter_MetroAreaDemographicReportRequest"
+			, "MetroAreaDemographicReportFilter" => "AdCenter_MetroAreaDemographicReportFilter"
+			, "PublisherUsagePerformanceReportRequest" => "AdCenter_PublisherUsagePerformanceReportRequest"
+			, "PublisherUsagePerformanceReportFilter" => "AdCenter_PublisherUsagePerformanceReportFilter"
+			, "SitePerformanceReportRequest" => "AdCenter_SitePerformanceReportRequest"
+			, "SitePerformanceReportFilter" => "AdCenter_SitePerformanceReportFilter"
+			, "BehavioralTargetReportRequest" => "AdCenter_BehavioralTargetReportRequest"
+			, "BehavioralTargetReportFilter" => "AdCenter_BehavioralTargetReportFilter"
+			, "BehavioralPerformanceReportRequest" => "AdCenter_BehavioralPerformanceReportRequest"
+			, "BehavioralPerformanceReportFilter" => "AdCenter_BehavioralPerformanceReportFilter"
+			, "SearchQueryPerformanceReportRequest" => "AdCenter_SearchQueryPerformanceReportRequest"
+			, "SearchQueryPerformanceReportFilter" => "AdCenter_SearchQueryPerformanceReportFilter"
+			, "ConversionPerformanceReportRequest" => "AdCenter_ConversionPerformanceReportRequest"
+			, "ConversionPerformanceReportFilter" => "AdCenter_ConversionPerformanceReportFilter"
+			, "GoalsAndFunnelsReportRequest" => "AdCenter_GoalsAndFunnelsReportRequest"
+			, "GoalsAndFunnelsReportFilter" => "AdCenter_GoalsAndFunnelsReportFilter"
+			, "TrafficSourcesReportRequest" => "AdCenter_TrafficSourcesReportRequest"
+			, "TrafficSourcesReportFilter" => "AdCenter_TrafficSourcesReportFilter"
+			, "SegmentationReportRequest" => "AdCenter_SegmentationReportRequest"
+			, "SegmentationReportFilter" => "AdCenter_SegmentationReportFilter"
+			, "SubmitGenerateReportResponse" => "AdCenter_SubmitGenerateReportResponse"
+			, "ApiFaultDetail" => "AdCenter_ApiFaultDetail"
+			, "BatchError" => "AdCenter_BatchError"
+			, "PollGenerateReportRequest" => "AdCenter_PollGenerateReportRequest"
 			, "PollGenerateReportResponse" => "AdCenter_PollGenerateReportResponse"
 			, "ReportRequestStatus" => "AdCenter_ReportRequestStatus"
 		);
@@ -35,11 +87,10 @@ class AdCenter_Service_ReportingService extends AdCenter_Service_SoapClient
 	 */
 	public function SubmitGenerateReport(AdCenter_ReportRequest $request)
 	{
-		$request = new AdCenter_SubmitGenerateReportRequest($request);
 		$response = $this->Call(
 			"SubmitGenerateReport"
 			, array(
-				new SoapParam($request, "SubmitGenerateReportRequest")
+				new SoapParam(new AdCenter_SubmitGenerateReportRequest($request), "SubmitGenerateReportRequest")
 			)
 		);
 		return $response->ReportRequestId;
@@ -51,11 +102,10 @@ class AdCenter_Service_ReportingService extends AdCenter_Service_SoapClient
 	 */
 	public function PollGenerateReport($reportRequestId)
 	{
-		$request = new AdCenter_PollGenerateReportRequest($reportRequestId);
 		$response = $this->Call(
 			"PollGenerateReport"
 			, array(
-				new SoapParam($request, "PollGenerateReportRequest")
+				new SoapParam(new AdCenter_PollGenerateReportRequest($reportRequestId), "PollGenerateReportRequest")
 			)
 		);
 		return $response->ReportRequestStatus;
@@ -105,13 +155,22 @@ class AdCenter_ReportAggregation
 }
 
 
+class AdCenter_CampaignStatus
+{
+	const Active = "Active";
+	const BudgetPaused = "BudgetPaused";
+	const Cancelled = "Cancelled";
+	const Deleted = "Deleted";
+	const Paused = "Paused";
+	const Submitted = "Submitted";
+}
 /**
  * REQUEST AND RESPONSES
  */
 
 class AdCenter_SubmitGenerateReportRequest
 {
-	/** @var ReportRequest */
+	/** @var AdCenter_ReportRequest */
 	public $ReportRequest;
 	/** Constructor */
 	public function __construct($ReportRequest = null)
@@ -234,12 +293,13 @@ class AdCenter_KeywordPerformanceReportRequest extends AdCenter_ReportRequest
 	 * @param AdCenter_AccountThroughAdGroupReportScope $Scope
 	 * @param AdCenter_ReportTime $Time
 	 */
-	public function __construct($Aggregation = null, array $Columns = array(), $Filter = null, $Scope = null, $Time = null)
+	public function __construct($Aggregation = null, array $Columns = array(), $Filter = null, $Scope = null, $Time = null, $Format = null, $Language = null, $ReportName = null, $ReturnOnlyCompleteData = null)
 	{
 		// Set some default values
 		if ($Scope === null) {
 			$Scope = new AdCenter_AccountThroughAdGroupReportScope();
 		}
+		parent::__construct($Format, $Language, $ReportName, $ReturnOnlyCompleteData);
 		// Populate the
 		$this->Aggregation = $Aggregation;
 		$this->Columns = $Columns;
@@ -361,4 +421,68 @@ class AdCenter_ReportRequestStatus
 
 	/** @var string */
 	public $Status;
+}
+
+class AdCenter_CampaignPerformanceReportRequest extends AdCenter_ReportRequest
+{
+	/** @var ReportAggregation */
+	public $Aggregation;
+	/** @var ArrayOfCampaignPerformanceReportColumn */
+	public $Columns;
+	/** @var CampaignPerformanceReportFilter */
+	public $Filter;
+	/** @var AccountThroughCampaignReportScope */
+	public $Scope;
+	/** @var ReportTime */
+	public $Time;
+	/** Constructor */
+	public function __construct($Aggregation = null, $Columns = null, $Filter = null, $Scope = null, $Time = null, $Format = null, $Language = null, $ReportName = null, $ReturnOnlyCompleteData = null)
+	{
+		parent::__construct($Format, $Language, $ReportName, $ReturnOnlyCompleteData);
+		$this->Aggregation = $Aggregation;
+		$this->Columns = $Columns;
+		$this->Filter = $Filter;
+		$this->Scope = $Scope;
+		$this->Time = $Time;
+	}
+}
+
+class AdCenter_CampaignPerformanceReportFilter
+{
+	/**
+	 * @var string
+	 * @see AdCenter_AdDistribution
+	 */
+	public $AdDistribution;
+
+	/** @var DeviceTypeReportFilter */
+	public $DeviceType;
+
+	/**
+	 * @var string
+	 * @see AdCenter_CampaignStatus
+	 */
+	public $Status;
+
+	/** Constructor */
+	public function __construct($AdDistribution = null, $DeviceType = null, $Status = null)
+	{
+		$this->AdDistribution = $AdDistribution;
+		$this->DeviceType = $DeviceType;
+		$this->Status = $Status;
+	}
+}
+
+class AdCenter_AccountThroughCampaignReportScope
+{
+	/** @var int[] */
+	public $AccountIds;
+	/** @var AdCenter_CampaignReportScope[] */
+	public $Campaigns;
+	/** Constructor */
+	public function __construct($AccountIds = null, $Campaigns = null)
+	{
+		$this->AccountIds = $AccountIds;
+		$this->Campaigns = $Campaigns;
+	}
 }
