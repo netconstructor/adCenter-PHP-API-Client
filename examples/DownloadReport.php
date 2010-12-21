@@ -73,7 +73,7 @@ try {
 	echo "Downloading..." . PHP_EOL . $reportDownloadUrl . PHP_EOL;
 
 	// Filename to download to
-	$filename = "/tmp/api/test-msn-download." . time() . ".csv.zip";
+	$filename = "/tmp/test-msn-download." . time() . ".csv.zip";
 
 	// Downoad the file into the $filename through cURL
 	$handle = fopen($filename, "w");
