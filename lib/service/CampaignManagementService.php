@@ -45,7 +45,7 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 				"AccountId" => $accountId
 			)
 		);
-		return (isset($response->Campaigns->Campaign[0]) ? $response->Campaigns->Campaign : array($response->Campaigns->Campaign));
+		return (is_object($response->Campaigns->Campaign) ? array($response->Campaigns->Campaign) : $response->Campaigns->Campaign);
 	}
 
 }
