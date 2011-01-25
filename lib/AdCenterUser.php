@@ -17,6 +17,9 @@ class AdCenterUser
 	/** @var string */
 	public $DeveloperToken;
 
+	/** @var string */
+	public $CustomerAccountId;
+
 	/** @var array */
 	private $_services = array();
 
@@ -25,11 +28,12 @@ class AdCenterUser
 	 * @param string $password
 	 * @param string $developerToken
 	 */
-	public function __construct($username, $password, $developerToken)
+	public function __construct($username, $password, $developerToken, $customerAccountId = null)
 	{
 		$this->UserName = $username;
 		$this->Password = $password;
 		$this->DeveloperToken = $developerToken;
+		$this->CustomerAccountId = $customerAccountId;
 	}
 
 	/**
@@ -40,6 +44,18 @@ class AdCenterUser
 		return $this->GetService(
 			"AdministrationService"
 			, "https://adcenterapi.microsoft.com/Api/Advertiser/v7/Administration/AdministrationService.svc?wsdl"
+			, "https://adcenter.microsoft.com/v7"
+		);
+	}
+
+	/**
+	 * @return AdCenter_Service_CampaignManagementService
+	 */
+	public function GetCampaignManagementService()
+	{
+		return $this->GetService(
+			"CampaignManagementService"
+			, "https://adcenterapi.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc?wsdl"
 			, "https://adcenter.microsoft.com/v7"
 		);
 	}

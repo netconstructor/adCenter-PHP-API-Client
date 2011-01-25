@@ -44,6 +44,7 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 			new SoapHeader($this->GetNamespace(), "UserName", $this->_user->UserName)
 			, new SoapHeader($this->GetNamespace(), "Password", $this->_user->Password)
 			, new SoapHeader($this->GetNamespace(), "DeveloperToken", $this->_user->DeveloperToken)
+			, new SoapHeader($this->GetNamespace(), "CustomerAccountId", $this->_user->CustomerAccountId)
 		);
 
 		// Default class map (these are shared over all)
@@ -90,7 +91,7 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 
 		// Perform the soap call
 		try {
-			$result = parent::__soapCall($method, $bodyElements, null, $inputHeaders);
+			$result = parent::__soapCall($method, array($bodyElements), null, $inputHeaders);
 		} catch (SoapFault $f) {
 			// At this point, we could transform the verbose exceptions into a more unified format?
 			// For now, just re-throw the exception
