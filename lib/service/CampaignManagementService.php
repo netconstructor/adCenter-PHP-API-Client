@@ -42,7 +42,7 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 		$response = $this->Call(
 			"GetCampaignsByAccountId"
 			, array(
-				"AccountId" => $accountId
+				array("AccountId" => $accountId)
 			)
 		);
 		return (is_object($response->Campaigns->Campaign) ? array($response->Campaigns->Campaign) : $response->Campaigns->Campaign);

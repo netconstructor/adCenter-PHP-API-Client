@@ -91,7 +91,7 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 
 		// Perform the soap call
 		try {
-			$result = parent::__soapCall($method, array($bodyElements), null, $inputHeaders);
+			$result = parent::__soapCall($method, $bodyElements, null, $inputHeaders);
 		} catch (SoapFault $f) {
 			// At this point, we could transform the verbose exceptions into a more unified format?
 			// For now, just re-throw the exception
