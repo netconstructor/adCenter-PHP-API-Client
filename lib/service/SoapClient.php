@@ -13,18 +13,18 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 	/**
 	 * @var string
 	 */
-	private $_namespace;
+	protected $_namespace;
 
 	/**
 	 * @var AdCenterUser
 	 */
-	private $_user;
+	protected $_user;
 
 	/**
 	 * This array holds SOAP input headers that are required for each SOAP call.
 	 * @var SoapHeader[]
 	 */
-	private $_requiredInputHeaders = array();
+	protected $_requiredInputHeaders = array();
 
 	/**
 	 * @param AdCenterUser $user AdCenterUser Object
@@ -65,6 +65,7 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 		parent::__construct($wsdl, array(
 			"trace" => true
 			, "classmap" => $classMap
+			, "features" => SOAP_SINGLE_ELEMENT_ARRAYS
 		));
 
 	}

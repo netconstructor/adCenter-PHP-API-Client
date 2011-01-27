@@ -19,10 +19,10 @@ if (!class_exists("AdCenter_Campaign"))
 	    /** @var string */
 	    public $ConversionTrackingScript;
 
-	    /** @var AdCenter_double */
+	    /** @var double */
 	    public $DailyBudget;
 
-	    /** @var AdCenter_boolean */
+	    /** @var boolean */
 	    public $DaylightSaving;
 
 	    /** @var string */
@@ -31,7 +31,7 @@ if (!class_exists("AdCenter_Campaign"))
 	    /** @var int */
 	    public $Id;
 
-	    /** @var AdCenter_double */
+	    /** @var double */
 	    public $MonthlyBudget;
 
 	    /** @var string */
@@ -82,6 +82,24 @@ if (!class_exists("AdCenter_Campaign"))
 	        $this->Status = $Status;
 	        $this->TimeZone = $TimeZone;
 	    }
+	}
+}
+
+if (!class_exists("AdCenter_GetCampaignsByIdsRequest"))
+{
+	class AdCenter_GetCampaignsByIdsRequest
+	{
+		/** @var int */
+		public $AccountId;
+
+		/** @var int[] */
+		public $CampaignIds;
+
+		public function __construct($AccountId = null, $CampaignIds = null)
+		{
+			$this->AccountId = $AccountId;
+			$this->CampaignIds = $CampaignIds;
+		}
 	}
 }
 
