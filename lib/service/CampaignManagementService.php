@@ -41,12 +41,12 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 	public function GetCampaignsByAccountId($accountId = null)
 	{
 		if ($accountId === null) {
-			$accountId = $this->_user->CustomerAccountId;
+			$accountId = $this->_user->GetCustomerAccountId();
 		}
 		$response = $this->Call(
 			"GetCampaignsByAccountId"
 			, array(
-				new SoapParam($accountId, "AccountId")
+				array("AccountId" => $accountId)
 			)
 		);
 		return $response->Campaigns->Campaign;
@@ -61,7 +61,7 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 		$response = $this->Call(
 			"GetCampaignsByIds"
 			, array(
-				new AdCenter_GetCampaignsByIdsRequest($this->_user->CustomerAccountId, $campaignIds)
+				new AdCenter_GetCampaignsByIdsRequest($this->_user->GetCustomerAccountId(), $campaignIds)
 			)
 		);
 		return $response->Campaigns->Campaign;

@@ -9,16 +9,16 @@
 class AdCenterUser
 {
 	/** @var string */
-	public $UserName;
+	protected $UserName;
 
 	/** @var string */
-	public $Password;
+	protected $Password;
 
 	/** @var string */
-	public $DeveloperToken;
+	protected $DeveloperToken;
 
 	/** @var string */
-	public $CustomerAccountId;
+	protected $CustomerAccountId;
 
 	/** @var array */
 	private $_services = array();
@@ -30,10 +30,74 @@ class AdCenterUser
 	 */
 	public function __construct($username, $password, $developerToken, $customerAccountId = null)
 	{
+		$this->SetUserName($username);
+		$this->SetPassword($password);
+		$this->SetDeveloperToken($developerToken);
+		$this->SetCustomerAccountId($customerAccountId);
+	}
+
+	/**
+	 * @param string $username
+	 */
+	public function SetUserName($username)
+	{
 		$this->UserName = $username;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function GetUserName()
+	{
+		return $this->UserName;
+	}
+
+	/**
+	 * @param string $password
+	 */
+	public function SetPassword($password)
+	{
 		$this->Password = $password;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function GetPassword()
+	{
+		return $this->Password;
+	}
+
+	/**
+	 * @param string $developerToken
+	 */
+	public function SetDeveloperToken($developerToken)
+	{
 		$this->DeveloperToken = $developerToken;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function GetDeveloperToken()
+	{
+		return $this->DeveloperToken;
+	}
+
+	/**
+	 * @param int $customerAccountId
+	 */
+	public function SetCustomerAccountId($customerAccountId)
+	{
 		$this->CustomerAccountId = $customerAccountId;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function GetCustomerAccountId()
+	{
+		return $this->CustomerAccountId;
 	}
 
 	/**

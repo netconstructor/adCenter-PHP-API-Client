@@ -41,10 +41,10 @@ abstract class AdCenter_Service_SoapClient extends SoapClient
 
 		// Set the input headers which are required for every adCenter SOAP call
 		$this->_requiredInputHeaders = array(
-			new SoapHeader($this->GetNamespace(), "UserName", $this->_user->UserName)
-			, new SoapHeader($this->GetNamespace(), "Password", $this->_user->Password)
-			, new SoapHeader($this->GetNamespace(), "DeveloperToken", $this->_user->DeveloperToken)
-			, new SoapHeader($this->GetNamespace(), "CustomerAccountId", $this->_user->CustomerAccountId)
+			new SoapHeader($this->GetNamespace(), "UserName", $this->_user->GetUserName())
+			, new SoapHeader($this->GetNamespace(), "Password", $this->_user->GetPassword())
+			, new SoapHeader($this->GetNamespace(), "DeveloperToken", $this->_user->GetDeveloperToken())
+			, new SoapHeader($this->GetNamespace(), "CustomerAccountId", $this->_user->GetCustomerAccountId())
 		);
 
 		// Default class map (these are shared over all)
