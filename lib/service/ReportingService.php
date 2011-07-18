@@ -486,3 +486,74 @@ class AdCenter_AccountThroughCampaignReportScope
 		$this->Campaigns = $Campaigns;
 	}
 }
+
+
+class AdCenter_AdPerformanceReportRequest extends AdCenter_ReportRequest
+{
+	/** @var ReportAggregation */
+	public $Aggregation;
+	/** @var ArrayOfAdPerformanceReportColumn */
+	public $Columns;
+	/** @var AdPerformanceReportFilter */
+	public $Filter;
+	/** @var AccountThroughAdGroupReportScope */
+	public $Scope;
+	/** @var ReportTime */
+	public $Time;
+	/** Constructor */
+	public function __construct($Aggregation = null, $Columns = null, $Filter = null, $Scope = null, $Time = null, $Format = null, $Language = null, $ReportName = null, $ReturnOnlyCompleteData = null)
+	{
+		parent::__construct($Format, $Language, $ReportName, $ReturnOnlyCompleteData);
+		$this->Aggregation = $Aggregation;
+		$this->Columns = $Columns;
+		$this->Filter = $Filter;
+		$this->Scope = $Scope;
+		$this->Time = $Time;
+	}
+}
+
+class AdCenter_AdPerformanceReportFilter
+{
+	/** @var AdCenter_AdDistributionReportFilter */
+	public $AdDistribution;
+	
+	/** @var AdCenter_AdTypeReportFilter */
+	public $AdType;
+	
+	/** @var AdCenter_DeviceTypeReportFilter */
+	public $DeviceType;
+	
+	public $LanguageAndRegion;
+
+	public function __construct($AdDistribution = null, $AdType = null, $DeviceType = null, $LanguageAndRegion = null)
+	{
+		$this->AdDistribution = $AdDistribution;
+		$this->AdType = $AdType;
+		$this->DeviceType = $DeviceType;
+		$this->LanguageAndRegion = $LanguageAndRegion;
+	}
+}
+
+class AdCenter_AdDistributionReportFilter
+{
+	const FILTER_CONTENT = "Content";
+	const FILTER_SEARCH = "Search";
+}
+
+class AdCenter_AdTypeReportFilter
+{
+	const FILTER_IMAGE = "Image";
+	const FILTER_LOCAL = "Local";
+	const FILTER_MOBILE = "Mobile";
+	const FILTER_RICHAD = "RichAd";
+	const FILTER_RICHMEDIA = "RichMedia";
+	const FILTER_TEXT = "Text";
+	const FILTER_THIRDPARTYCREATIVE = "ThirdPartyCreative";
+}
+
+class AdCenter_DeviceTypeReportFilter 
+{
+	const FILTER_COMPUTER = "Computer";
+	const FILTER_SMARTPHONE = "SmartPhone";
+	const FILTER_NONSMARTPHONE = "NonSmartPhone";
+}
