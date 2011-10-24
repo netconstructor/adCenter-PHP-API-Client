@@ -28,6 +28,7 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 	{
 		return array(
 			"GetCampaignsByAccountIdResponse" => "AdCenter_GetCampaignsByAccountIdResponse"
+			, "GetCampaignsInfoByAccountIdResponse" => "AdCenter_GetCampaignsInfoByAccountIdResponse"
 			, "GetCampaignsByIdsResponse" => "AdCenter_GetCampaignsByIdsResponse"
 			, "GetCampaignsByIdsRequest" => "AdCenter_GetCampaignsByIdsRequest"
 			, "Campaign" => "AdCenter_Campaign"
@@ -50,6 +51,24 @@ class AdCenter_Service_CampaignManagementService extends AdCenter_Service_SoapCl
 			)
 		);
 		return $response->Campaigns->Campaign;
+	}
+
+	/**
+	 * @param int $accountId The identifier of the account that contains the campaigns to get.
+	 * @return AdCenter_Campaign[]
+	 */
+	public function GetCampaignsInfoByAccountId($accountId = null)
+	{
+		if ($accountId === null) {
+			$accountId = $this->_user->GetCustomerAccountId();
+		}
+		$response = $this->Call(
+			"GetCampaignsInfoByAccountId"
+			, array(
+				array("AccountId" => $accountId)
+			)
+		);
+		return $response->CampaignsInfo->CampaignInfo;
 	}
 
 	/**

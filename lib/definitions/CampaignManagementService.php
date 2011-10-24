@@ -120,3 +120,12 @@ if (!class_exists("AdCenter_GetCampaignsByAccountIdResponse"))
 	    public $Campaigns;
 	}
 }
+
+if (!class_exists("AdCenter_GetCampaignsInfoByAccountIdResponse"))
+{
+	class AdCenter_GetCampaignsInfoByAccountIdResponse
+	{
+	    /** @var AdCenter_Campaign[] */
+	    public $CampaignsInfo;
+	}
+}
